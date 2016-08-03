@@ -1,0 +1,4 @@
+//MEUS SCRIPTS 
+$(function() {
+	
+});
