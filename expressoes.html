@@ -62,56 +62,65 @@
       </div>
     </nav>
 
-    <div class="container" ng-app="">
+    <div class="container">
         <h1>Estudos AngularJS</h1>
-        <section id="aplicacoes">
+        <section id="expressoes">
             <article>
-                <h2>Aplicações AngularJS</h2>
-                <p>Em AngularJS <strong>modules</strong> definem as aplicações, os <strong>controllers</strong>, como o próprio nome diz, os controles na aplicação Angular.</p>
-                <p>No exemplo abaixo, a diretiva <code>ng-app</code> define a aplicação, ou seja, será nosso <strong>angular module</strong> e a diretiva <code>ng-controller</code> define o controle.</p>
+                <h2>Expressões Angular JS</h2>
+                <p>
+                    Em AngularJS, dados são vinculados ao HTML usando <strong>expressões</strong>.
+                </p>
+                <p>
+                    Expressões Angular podem ser escritas entre chaves duplas -  <code>{{<em>expression</em>}}</code> - ou, ainda, informadas através de uma diretiva - <code>ng-bind="<em>expression</em>"</code>.<br>
+                    A expressão será interpretada e o resultado será  informado exatamente onde ela foi escrita.
+                </p>
+                <p>
+                    Expressões AngularJS são muito parecidas com expressões em Javascript puro, podendo contar <strong>literals</strong>, <strong>operadores</strong> ou <strong>variáveis</strong>.
+                </p>
 
-                <pre>
-                    <code>
-                    &lt;div ng-app="myApp" ng-controller="myCtrl"&gt;
-
-                        First Name: <input type="text" ng-model="firstName"><br>
-                        Last Name: <input type="text" ng-model="lastName"><br>
-                        <br>
-                        Full Name: {{<strong>firstName</strong> + " " + <strong>lastName</strong>}}
-                        
-                            &lt;script&gt;
-                                var app = angular.module('myApp', []);
-                                app.controller('myCtrl', function($scope) {
-                                    $scope.firstName= "John";
-                                    $scope.lastName= "Doe";
-                                });
-                            &lt;/script&gt;
-                        
-                    &lt;/div&gt;
-                    </code>
-                </pre>
-                <p class="text-right">
-                    <a href="http://www.w3schools.com/angular/tryit.asp?filename=try_ng_intro_controller" target="blank">
-                        <strong>Ver exemplo em funcionamento</strong>
-                    </a>
+                <p>
+                    Exemplo:<br>
+                    <code>{{<strong>5 + 5</strong>}}</code> ou <code>{{<strong>primeiroNome + " " + ultimoNome</strong>}}</code>
                 </p>
             </article>
 
             <article>
-                <h2>Explicando o exemplo anterior</h2>
-                
-                <p>Módulo AngularJS definindo a aplicação:</p>
-                <code>
-                    var app = angular.module('myApp', []);
-                </code>
+                <h2>Exemplos práticos</h2>
+                <pre>
+                &lt;div ng-app=""&gt;
+                    &lt;p&gt;Minha primeira expressão: {{ 5 + 5 }}&lt;/p&gt;
+                &lt;/div&gt;
+                </pre>
+                <p class="text-right">
+                    <a href="http://www.w3schools.com/angular/tryit.asp?filename=try_ng_expression" target="blank">
+                        <strong>Ver exemplo em funcionamento</strong>
+                    </a>
+                </p>
 
-                <p>Informando <strong>controller</strong> para aplicação:</p>
-                <code>
-                    app.controller('myCtrl', function($scope) {
-                        $scope.firstName= "John";
-                        $scope.lastName= "Doe";
-                    });
-                </code>
+                <p>
+                    É possível escrever uma expressão como quiser, o AngularJS sempre a interpretará e retornar o resultado.<br>
+                    Exemplo: Mudaremos o valor de uma propriedade <abbr title="Cascade Stylesheet" lang="en">CSS</abbr> a qual alterará a cor de fundo do input abaixo de acordo com o valor digitado:
+                </p>
+
+                <pre>
+                &lt;div ng-app="" ng-init="myCol='lightblue'"&lt;/p&gt;
+                    &lt;input style="background-color:{{myCol}}" ng-model="myCol" value="{{myCol}}"&gt;
+                &lt;/div&gt;
+                </pre>
+                <p class="text-right">
+                    <a href="http://www.w3schools.com/angular/tryit.asp?filename=try_ng_expression_3" target="blank">
+                        <strong>Ver exemplo em funcionamento</strong>
+                    </a>
+                </p>
+
+                <h2>Trabalhando com números usando AngularJS</h2>
+
+                <p>Podemos trabalhar com números em AngularJS de maneira similar ao Javascript convencional:</p>
+                <pre>
+                &lt;div ng-app="" ng-init="quantity=3;cost=5"&lt;/p&gt;
+                    &lt;p&gt;Total total em dólar: {{ quantity * cost }}&lt;/p&gt;
+                &lt;/div&gt;
+                </pre>
             </article>
         </section>
         
