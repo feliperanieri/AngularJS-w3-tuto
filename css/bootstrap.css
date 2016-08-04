@@ -27,6 +27,8 @@ section,
 summary {
   display: block;
 }
+article{border-bottom:1px solid #CCC; margin-bottom:20px; padding-bottom: 20px;}
+article:last-child{border:unset;}
 audio,
 canvas,
 progress,

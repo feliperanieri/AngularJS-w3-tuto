@@ -67,6 +67,193 @@
         <section id="modulos">
             <article>
                 <h2>Módulos AngularJS</h2>
+                <p>
+                    Um módulo AngularJS marca - define como - uma aplicação.<br>
+                    O módulo é um "bloco" que pode comportar diferentes partes da aplicação e "guarda" os controles dela.<br>
+                    É válido dizer também que todo controle pertecendo à um módulo.
+                </p>
+
+                <h2>Criando um módulo em AngularJS</h2>
+                <p>
+                    Um módulo é criado utilizando a função <code>angular.module</code>, conforme exemplo abaixo:
+                    <pre>
+&lt;div ng-app="myApp"&gt;...&lt;/div&gt;
+&lt;script&gt;
+    var app = angular.module("myApp", []);
+&lt;/script&gt;
+                    </pre>
+                </p>
+                <p>
+                    O parâmetro "myApp" é passado como referência ao HTML informando em qual elemento a aplicação rodará.<br>
+                    A partir daí, já é possível adicionar controles, filtros, diretivas, validações e etc à nossa aplicação AngularJS.
+                </p>
+            </article>
+
+            <article>
+                <h2>Adicionando controles</h2>
+                <p>Neste exemplo adicionaremos um controle à aplicação e o referenciaremos utilizando a diretiva <code>ng-controller</code>:</p>
+
+                <pre>
+&lt;div ng-app="myApp" ng-controller="myCtrl"&gt;
+{{ firstName + " " + lastName }}
+&lt;/div&gt;
+
+&lt;script&gt;
+    var app = angular.module("myApp", []);
+
+    app.controller("myCtrl", function($scope) {
+        $scope.firstName = "Felipe";
+        $scope.lastName = "Ranieri";
+    });
+&lt;/script&gt;
+                </pre>
+                <p class="text-right">
+                    <a href="http://www.w3schools.com/angular/tryit.asp?filename=try_ng_module" target="blank">
+                        <strong>Ver exemplo em funcionamento</strong>
+                    </a>
+                </p>
+                <p>
+                    Outros exemplos de controles serão apresentados ao longo deste tutorial.
+                </p>
+            </article>
+
+            <article>
+                <h2>Adicionando uma diretiva</h2>
+
+                <p>
+                    O AngularJS possui um conjunto de diretivas internas (proprietárias) as quais podemos utilizar para incrementar funcionalidades à nossa aplicação.<br>
+                    Referência completa de <a href="http://www.w3schools.com/angular/angular_ref_directives.asp" target="blank" lang="en" rel="external">diretivas AngularJS</a>
+                </p>
+                <p>
+                    Podemos usar módulos para adicionar nossas próprias diretivas à uma aplicação AngularJS, conforme exemplo a seguir:
+
+                    <pre>
+&lt;div ng-app="myApp" w3-test-directive&gt;&lt;/div&gt;
+
+&lt;script&gt; 
+var app = angular.module("myApp", []);
+
+app.directive("w3TestDirective", function() {
+    return {
+        template : "Feito utilizando um construtor de diretivas"
+    };
+});
+&lt;/script&gt;
+                    </pre>
+                </p>
+                <p class="text-right">
+                    <a href="http://www.w3schools.com/angular/tryit.asp?filename=try_ng_directive" target="blank">
+                        <strong>Ver exemplo em funcionamento</strong>
+                    </a>
+                </p>
+                <p>
+                    Uma diretiva pode ser chamada em diversos pontos da aplicação, conforme exemplo a seguir:<br>
+                    <code>
+                        &lt;div ng-app="myApp"&gt;<br>&nbsp;&nbsp;&nbsp;
+                            &lt;span w3-test-directive>&lt;/span&gt;<br>&nbsp;&nbsp;&nbsp;
+
+                            &lt;ul&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &lt;li w3-test-directive>&lt;/li&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &lt;li w3-test-directive>&lt;/li&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &lt;li w3-test-directive>&lt;/li&gt;<br>&nbsp;&nbsp;&nbsp;
+                            &lt;/ul&gt;<br>
+
+                        &lt;/div&gt;<br>
+
+                        &lt;script&gt; <br>&nbsp;&nbsp;&nbsp;
+                        var app = angular.module("myApp", []);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                        app.directive("w3TestDirective", function() {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            return {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                template : "Feito utilizando um construtor de diretivas"<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            };<br>&nbsp;&nbsp;&nbsp;
+                        });<br>
+                        &lt;/script&gt;
+                    </code>
+                </p>
+                <p>
+                    Resultado do código descrito acima:<br>
+                    <div ng-app="myApp">
+                        <span w3-test-directive></span>
+                        <ul>
+                           <li w3-test-directive></li>
+                           <li w3-test-directive></li>
+                           <li w3-test-directive></li>
+                        </ul>
+                    </div>
+                    <script> 
+                        var app = angular.module("myApp", []);
+                           app.directive("w3TestDirective", function() {
+                           return {
+                              template : "Feito utilizando um construtor de diretivas"
+                           };
+                        });
+                    </script>
+                </p>
+                <p>
+                    <em><strong>Note</strong> que no script, o nome da diretiva é escrito sem espaços e utilizando letra maiúscula na primeira letra de cada palavra - <strong>exceto</strong> na primeira palavra - já no HTML, a chamada da diretiva é realzada separadando as palavras por hífen e com todas as letras minúsculas</em>.<br>
+                    Outros exemplos sobre diretivas serão apresentados ao longo deste tutorial.
+                </p>
+
+            </article>
+
+            <article>
+                <h2>Módulos e controles em arquivos</h2>
+                <p>
+                    É muito comum em AngularJS, as aplicações chamarem módulos e controles através de arquivos Javascript.<br>
+                    No exemplo a seguir, "myApps.js" contém a definição do módulo da aplicação, enquanto que o arquivo "Ctrl.js" contém o controle.
+
+                    <pre>
+&lt;div ng-app="myApp" ng-controller="myCtrl"&gt;
+{{ firstName + " " + lastName }}
+&lt;/div&gt;
+
+&lt;script src="myApp.js"&gt;&lt;/script&gt;
+&lt;script src="myCtrl.js"&gt;&lt;/script&gt;
+                    </pre>
+                </p>
+
+                <p>
+                    No arquivo "myApp.js" temos a definição da aplicação através do seguinte código:<br>
+                    <code>var app = angular.module("myApp", []);</code><br>
+                    Já no arquivo "Ctrl.js" definimos o controle através do código:<br>
+                    <code>
+                        app.controller("myCtrl", function($scope) {<br>&nbsp;&nbsp;&nbsp;
+                            $scope.firstName    = "John";<br>&nbsp;&nbsp;&nbsp;
+                            $scope.lastName= "Doe";<br>
+                        });
+                    </code>
+                </p>
+
+                <h3>Nota:</h3>
+                <blockquote>
+                    O parâmetro "[]" na definição do módulo, pode ser utilizado para incluir dependências.<br>
+                    Sem este parâmetro, não estamos criando um novo módulo, sim recuperando um já existente.
+                </blockquote>
+                    
+                </p>
+
+                <p class="text-right">
+                    <a href="http://www.w3schools.com/angular/tryit.asp?filename=try_ng_module_files" target="blank">
+                        <strong>Ver exemplo em funcionamento</strong>
+                    </a>
+                </p>
+            </article>
+
+            <article>
+                <h2>Funções podem poluir o escopo global</h2>
+                <p>
+                    Devemos evitar funções globais em arquivos Javascript, pois estas funções podem ser facilmente sobrescritas ou destruídas por outros scripts.<br>
+                    Módulos AngularJS reduzem esse problema mantendo todas as funções no módulo.
+                </p>
+            </article>
+
+            <article>
+                <h2>Quando carregar a biblioteca</h2>
+                <p>
+                    Enquanto é comum nas aplicações HTML realizar a chamada dos scripts no final do <code>&lt;body&gt;</code>, em AngularJS é recomendado carregar a biblioteca tanto no elemento <code>&lt;head&gt;</code> como no começo do elemento <code>&lt;body&gt;</code>.<br>
+                    Esta prática é recomendada, por que a chamada do <code>angular.module</code> só é compilada após a carga da biblioteca.
+                </p>
             </article>
         </section>
         
