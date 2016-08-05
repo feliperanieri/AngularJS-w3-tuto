@@ -56,7 +56,8 @@
                 </ul>
             </li>
             <li><a href="expressoes.html">Expressões</a></li>
-            <li><a>Ipsum</a></li>
+            <li><a href="modulos.html">Módulos</a></li>
+            <li><a href="diretivas.html">Diretivas</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -66,7 +67,7 @@
         <h1>Estudos AngularJS</h1>
         <section id="expressoes">
             <article>
-                <h2>Expressões Angular JS</h2>
+                <h2>Expressões AngularJS</h2>
                 <p>
                     Em AngularJS, dados são vinculados ao HTML usando <strong>expressões</strong>.
                 </p>
@@ -87,9 +88,9 @@
             <article>
                 <h2>Exemplos práticos</h2>
                 <pre>
-                &lt;div ng-app=""&gt;
-                    &lt;p&gt;Minha primeira expressão: {{ 5 + 5 }}&lt;/p&gt;
-                &lt;/div&gt;
+&lt;div ng-app=""&gt;
+    &lt;p&gt;Minha primeira expressão: {{ 5 + 5 }}&lt;/p&gt;
+&lt;/div&gt;
                 </pre>
                 <p class="text-right">
                     <a href="http://www.w3schools.com/angular/tryit.asp?filename=try_ng_expression" target="blank">
@@ -103,9 +104,9 @@
                 </p>
 
                 <pre>
-                &lt;div ng-app="" ng-init="myCol='lightblue'"&lt;/p&gt;
-                    &lt;input style="background-color:{{myCol}}" ng-model="myCol" value="{{myCol}}"&gt;
-                &lt;/div&gt;
+&lt;div ng-app="" ng-init="myCol='lightblue'"&lt;/p&gt;
+    &lt;input style="background-color:{{myCol}}" ng-model="myCol" value="{{myCol}}"&gt;
+&lt;/div&gt;
                 </pre>
                 <p class="text-right">
                     <a href="http://www.w3schools.com/angular/tryit.asp?filename=try_ng_expression_3" target="blank">
@@ -117,10 +118,101 @@
 
                 <p>Podemos trabalhar com números em AngularJS de maneira similar ao Javascript convencional:</p>
                 <pre>
-                &lt;div ng-app="" ng-init="quantity=3;cost=5"&lt;/p&gt;
-                    &lt;p&gt;Total total em dólar: {{ quantity * cost }}&lt;/p&gt;
-                &lt;/div&gt;
+&lt;div ng-app="" ng-init="quantity=3;cost=5"&lt;/p&gt;
+    &lt;p&gt;Total em dólar: {{ quantity * cost }}&lt;/p&gt;
+&lt;/div&gt;
                 </pre>
+
+                <p>Mesmo exemplo utilizando <code>ng-bind</code>:</p>
+
+                <pre>
+&lt;div ng-app="" ng-init="quantity=3;cost=5"&gt;
+    &lt;p&gt;Total em dólar: &lt;span ng-bind="quantity * cost"&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;
+                </pre>
+
+                <blockquote>
+                    <p>Usar <code>ng-init</code> não é muito comum. No decorrer dos estudos aprenderemos como carregar dados, mais especificamente no capítulo sobre <strong>controllers</strong>.</p>
+                </blockquote>
+
+                <h2>Strings</h2>
+                <p>Assim como os valores numéricos, strings em Angular também são similares ao Javascript convencional</p>
+
+                <pre>
+&lt;div ng-app="" ng-init="firstName='Felipe';lastName='Ranieri'"&gt;
+    &lt;p&gt;The name is {{ firstName + " " + lastName }}&lt;/p&gt;
+&lt;/div&gt;
+                </pre>
+
+                <p>Mesmo exemplo utilizando <code>bg-bind</code>:</p>
+
+                <pre>
+&lt;div ng-app="" ng-init="firstName='Felipe';lastName='Ranieri'"&gt;
+    &lt;span ng-bind="firstName + ' ' + lastName"&gt;&lt;/span&gt;
+&lt;/div&gt;
+                </pre>
+
+                <h2>Objetos AngularJS</h2>
+                <p>Objetos em Angular também são similares ao Javascript convencional, conforme exemplo abaixo:</p>
+                <pre>
+&lt;div ng-app="" ng-init="person={firstName:'Felipe',lastName:'Ranieri'}"&gt;
+    &lt;p&gt;The name is {{ person.lastName }}&lt;/p&gt;
+&lt;/div&gt;
+                </pre>
+                <p class="text-right">
+                    <a href="http://www.w3schools.com/angular/tryit.asp?filename=try_ng_expressions_objects" target="blank">
+                        <strong>Ver exemplo em funcionamento</strong>
+                    </a>
+                </p>
+
+                <p>Mesmo exemplo utilizando <code>ng-bind</code>:</p>
+
+                <pre>
+&lt;div ng-app="" ng-init="person={firstName:'Felipe',lastName:'Ranieri'}"&gt;
+    &lt;p&gt;The name is &lt;span ng-bind="person.lastName"&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;
+                </pre>
+                <p class="text-right">
+                    <a href="http://www.w3schools.com/angular/tryit.asp?filename=try_ng_bind_objects" target="blank">
+                        <strong>Ver exemplo em funcionamento</strong>
+                    </a>
+                </p>
+
+                <h2>Arrays em AngularJS</h2>
+
+                <p>Arrays em AngularJS também são similares ao Javascript convencional.</p>
+                <pre>
+&lt;div ng-app="" ng-init="points=[1,15,19,2,40]"&gt;
+    &lt;p&gt;O terceiro resultado é: {{ points[2] }}&lt;/p&gt;
+&lt;/div&gt;
+                </pre>
+                <p class="text-right">
+                    <a href="http://www.w3schools.com/angular/tryit.asp?filename=try_ng_expressions_arrays" target="blank">
+                        <strong>Ver exemplo em funcionamento</strong>
+                    </a>
+                </p>
+
+                <p>Mesmo exemplo utilizando <code>ng-bind</code>:</p>
+
+                <pre>
+&lt;div ng-app="" ng-init="points=[1,15,19,2,40]"&gt;
+    &lt;p&gt;O terceiro resultado é: &lt;span ng-bind="points[2]"&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;
+                </pre>
+                <p class="text-right">
+                    <a href="http://www.w3schools.com/angular/tryit.asp?filename=try_ng_bind_arrays" target="blank">
+                        <strong>Ver exemplo em funcionamento</strong>
+                    </a>
+                </p>
+            </article>
+
+            <article>
+                <h2>Expressões AngularJS versus Expressões Javascript</h2>
+
+                <p>
+                    Assim como as expressões no Javascript convencional, expressões AngularJS podem conter <strong>literals</strong>, <strong>operadores lógicos</strong> e <strong>variáveis</strong>. porém, diferente das expressões Javascript, as expressões AngularJS não podem ser escritas dentro do HTML e não suportam <strong>loops</strong> e <strong>exceptions</strong>.<br>
+                    Outra diferença está no suporte aos <strong>filtros</strong>, realizado em AngularJS e não suportado no Javascript convencional.
+                </p>
             </article>
         </section>
         

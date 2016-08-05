@@ -56,7 +56,7 @@
                 </ul>
             </li>
             <li><a href="expressoes.html">Expressões</a></li>
-            <li><a>Ipsum</a></li>
+            <li><a href="modulos.html">Módulos</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -72,22 +72,22 @@
 
                 <pre>
                     <code>
-                    &lt;div ng-app="myApp" ng-controller="myCtrl"&gt;
+&lt;div ng-app="myApp" ng-controller="myCtrl"&gt;
 
-                        First Name: <input type="text" ng-model="firstName"><br>
-                        Last Name: <input type="text" ng-model="lastName"><br>
-                        <br>
-                        Full Name: {{<strong>firstName</strong> + " " + <strong>lastName</strong>}}
-                        
-                            &lt;script&gt;
-                                var app = angular.module('myApp', []);
-                                app.controller('myCtrl', function($scope) {
-                                    $scope.firstName= "John";
-                                    $scope.lastName= "Doe";
-                                });
-                            &lt;/script&gt;
-                        
-                    &lt;/div&gt;
+    First Name: <input type="text" ng-model="firstName"><br>
+    Last Name: <input type="text" ng-model="lastName"><br>
+    <br>
+    Full Name: {{<strong>firstName</strong> + " " + <strong>lastName</strong>}}
+    
+        &lt;script&gt;
+            var app = angular.module('myApp', []);
+            app.controller('myCtrl', function($scope) {
+                $scope.firstName= "John";
+                $scope.lastName= "Doe";
+            });
+        &lt;/script&gt;
+    
+&lt;/div&gt;
                     </code>
                 </pre>
                 <p class="text-right">
